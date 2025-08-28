@@ -14,7 +14,7 @@
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
         <h1 class="text-2xl font-bold text-blue-600">SoftNova Shop</h1>
         <nav class="space-x-6">
-            <a href="#" class="hover:text-blue-600">Home</a>
+            <a href="#" class="hover:text-blue-600">Dashboard</a>
             <a href="#" class="hover:text-blue-600">Products</a>
             <a href="#" class="hover:text-blue-600">About Us</a>
             <a href="#" class="hover:text-blue-600">Contact</a>
@@ -36,7 +36,7 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
         <div class="bg-white shadow rounded-lg p-4 text-center hover:shadow-lg">Electronics</div>
         <div class="bg-white shadow rounded-lg p-4 text-center hover:shadow-lg">Fashion</div>
-        <div class="bg-white shadow rounded-lg p-4 text-center hover:shadow-lg">Home</div>
+        <div class="bg-white shadow rounded-lg p-4 text-center hover:shadow-lg">Dashboard</div>
         <div class="bg-white shadow rounded-lg p-4 text-center hover:shadow-lg">Books</div>
     </div>
 </section>

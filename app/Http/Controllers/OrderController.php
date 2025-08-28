@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Product;
 
 class OrderController extends Controller
 {
@@ -11,7 +14,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all(); // Fetch all products
+        return view('orders.create', compact('products'));
     }
 
     /**
@@ -19,7 +23,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('orders.create');
     }
 
     /**
@@ -27,8 +31,28 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'You must be logged in to place an order.');
+        }
+
+        $order = Order::create([
+            'user_id' => auth()->id(),
+            'total_amount' => $request->total_amount,
+            'status' => 'pending',
+        ]);
+
+        foreach ($request->items as $item) {
+            OrderItem::create([
+                'order_id' => $order->id,
+                'product_id' => $item['product_id'],
+                'quantity' => $item['quantity'],
+                'price' => $item['price'],
+            ]);
+        }
+
+        return redirect()->route('orders.index')->with('success', 'Order placed successfully.');
     }
+
 
     /**
      * Display the specified resource.
@@ -43,7 +67,9 @@ class OrderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $order = Order::with('items')->findOrFail($id);
+        $products = Product::all();
+        return view('orders.edit', compact('order', 'products'));
     }
 
     /**
