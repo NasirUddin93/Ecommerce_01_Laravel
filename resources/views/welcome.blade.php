@@ -19,6 +19,7 @@
             <a href="#" class="hover:text-blue-600">About Us</a>
             <a href="#" class="hover:text-blue-600">Contact</a>
             <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Cart (0)</button>
+            <a href="/login" class="hover:text-blue-600">login</a>
         </nav>
     </div>
 </header>
